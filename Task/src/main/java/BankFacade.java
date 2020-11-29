@@ -14,7 +14,10 @@ public class BankFacade {
 
     public void info() throws UnknownNameOperationException, SQLException, UnknownAccountException, NotEnoughMoneyException {
 
-        dbAccDao.createNew();
+        AccDaoFactory accDaoFactory = new AccDaoFactory();
+        Dao<Account> dao = accDaoFactory.getDao("db");
+
+        dao.createNew();
 
         for (int i = 0; i < 11; i++) {
             accounts.add(new Account());
@@ -42,10 +45,10 @@ public class BankFacade {
         for (int i = 0; i < 4; i++) {
 
             switch (accounts.get(i).getOperation()) {
-                case "balance" -> dbAccDao.balance(accounts.get(i));
-                case "withdraw" -> dbAccDao.withdraw(accounts.get(i));
-                case "deposit" -> dbAccDao.deposit(accounts.get(i));
-                case "transfer" -> dbAccDao.transfer(accounts.get(i), accounts.get(i+1));
+                case "balance" -> dao.balance(accounts.get(i));
+                case "withdraw" -> dao.withdraw(accounts.get(i));
+                case "deposit" -> dao.deposit(accounts.get(i));
+                case "transfer" -> dao.transfer(accounts.get(i), accounts.get(i+1));
 
                 default -> throw new UnknownNameOperationException("Неизвестная операция " + accounts.get(i).getOperation());
             }

@@ -22,4 +22,9 @@ public class JsonAccDao implements Dao<Account> {
 
     }
 
+    @Override
+    public void createNew() {
+
+    }
+
 }

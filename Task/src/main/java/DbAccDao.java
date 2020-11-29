@@ -33,7 +33,7 @@ class DbAccDao implements Dao<Account> {
         balance(acc2);
     }
 
-    void createNew() {
+    public void createNew() {
 
         try {
             DriverManager

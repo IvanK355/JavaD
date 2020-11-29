@@ -6,4 +6,6 @@ public interface Dao<T> {
     void deposit(T item) throws SQLException, UnknownAccountException;
     void withdraw(T item) throws SQLException, UnknownAccountException, NotEnoughMoneyException;
     void transfer(T item1, T item2) throws SQLException, UnknownAccountException, NotEnoughMoneyException;
+
+    void createNew();
 }
