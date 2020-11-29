@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="99f0ea9f-d5b6-42a4-9774-9287f71c3943" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/src/main/java/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/src/main/java/BankFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/BankFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/src/main/java/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/CarDaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/AccDaoFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/src/main/java/DbAccDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/DbAccDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/src/main/java/JsonAccDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/JsonAccDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,13 +103,21 @@
       <option name="project" value="LOCAL" />
       <updated>1606646887892</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Java-05 v1 rel_2">
+      <created>1606650915168</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606650915168</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Java-05 v1" />
     <MESSAGE value="Java-05 v1 rel_1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Java-05 v1 rel_1" />
+    <MESSAGE value="Java-05 v1 rel_2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Java-05 v1 rel_2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="435" y="187" key="#Notifications" timestamp="1606644824740">
@@ -131,30 +136,30 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1606644030784" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1606650677064">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1606651787006">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606650677064" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1606650677063">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606651787006" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1606651787006">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606650677063" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1606650677063">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606651787006" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1606651787006">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606650677063" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1606650677063">
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606651787006" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1606651787006">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606650677063" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606651787006" />
     <state x="163" y="0" key="SettingsEditor" timestamp="1606643720059">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1606643720059" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1606644908678">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1606650901632">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1606644908678" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1606650901632" />
     <state x="500" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606644896567">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

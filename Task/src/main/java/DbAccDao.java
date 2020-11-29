@@ -2,6 +2,10 @@ import java.sql.*;
 
 class DbAccDao implements Dao<Account> {
 
+    private final String SELECT_QUERY = "SELECT * FROM account WHERE id = ?";
+    private final String UPDATE_DEPOSIT_QUERY ="update account set amount = amount +  ? WHERE id = ?";
+    private final String UPDATE_WITHDRAW_QUERY ="update account set amount = amount -  ? WHERE id = ?";
+
     public void withdraw(Account acc) throws SQLException, UnknownAccountException, NotEnoughMoneyException {
         sqlSelect(acc);
         updateWithdraw(acc);
@@ -47,7 +51,7 @@ class DbAccDao implements Dao<Account> {
 
                 connection = DriverManager
                         .getConnection("jdbc:h2:mem:ACCOUNT");
-                preparedStatement = connection.prepareStatement("SELECT * FROM account WHERE id = ?");
+                preparedStatement = connection.prepareStatement(SELECT_QUERY);
                 preparedStatement.setInt(1, (acc.getId()));
                 ResultSet resultSet = preparedStatement.executeQuery();
                 int id;
@@ -86,7 +90,7 @@ class DbAccDao implements Dao<Account> {
                 int amount = 0;
                 connection = DriverManager
                         .getConnection("jdbc:h2:mem:ACCOUNT");
-                preparedStatement = connection.prepareStatement("SELECT * FROM account WHERE id = ?");
+                preparedStatement = connection.prepareStatement(SELECT_QUERY);
                 preparedStatement.setInt(1, acc.getId());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
@@ -101,15 +105,14 @@ class DbAccDao implements Dao<Account> {
 
                 connection = DriverManager
                         .getConnection("jdbc:h2:mem:ACCOUNT");
-                String sql = "update account set amount = amount - ? WHERE id = ?";
-                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement = connection.prepareStatement(UPDATE_WITHDRAW_QUERY);
                 preparedStatement.setInt(1, acc.getAmount());
                 preparedStatement.setInt(2, acc.getId());
                 preparedStatement.executeUpdate();
 
                 preparedStatement = null;
 
-                preparedStatement = connection.prepareStatement("SELECT * FROM account WHERE id = ?");
+                preparedStatement = connection.prepareStatement(SELECT_QUERY);
                 preparedStatement.setInt(1, acc.getId());
                 resultSet = preparedStatement.executeQuery();
                 if (!resultSet.next()) {
@@ -129,7 +132,7 @@ class DbAccDao implements Dao<Account> {
         }
     }
 
-    void updateDeposit(Account acc) throws SQLException {
+    private void updateDeposit(Account acc) throws SQLException {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -140,15 +143,14 @@ class DbAccDao implements Dao<Account> {
 
                 connection = DriverManager
                         .getConnection("jdbc:h2:mem:ACCOUNT");
-                String sql = "update account set amount = amount +  ? WHERE id = ?";
-                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement = connection.prepareStatement(UPDATE_DEPOSIT_QUERY);
                 preparedStatement.setInt(1, acc.getAmount());
                 preparedStatement.setInt(2, acc.getId());
                 preparedStatement.executeUpdate();
 
                 preparedStatement = null;
 
-                preparedStatement = connection.prepareStatement("SELECT * FROM account WHERE id = ?");
+                preparedStatement = connection.prepareStatement(SELECT_QUERY);
                 preparedStatement.setInt(1, acc.getId());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (!resultSet.next()) {
@@ -167,5 +169,4 @@ class DbAccDao implements Dao<Account> {
             }
         }
     }
-
 }

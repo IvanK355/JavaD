@@ -1,4 +1,4 @@
-public class CarDaoFactory implements DaoFactory<Account> {
+public class AccDaoFactory implements DaoFactory<Account> {
     @Override
     public Dao<Account> getDao(String type) {
         Dao<Account> dao = null;
