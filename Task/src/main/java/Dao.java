@@ -1,11 +1,12 @@
+import java.io.IOException;
 import java.sql.SQLException;
 
 public interface Dao<T> {
 
-    void balance(T item) throws SQLException, UnknownAccountException;
-    void deposit(T item) throws SQLException, UnknownAccountException;
-    void withdraw(T item) throws SQLException, UnknownAccountException, NotEnoughMoneyException;
-    void transfer(T item1, T item2) throws SQLException, UnknownAccountException, NotEnoughMoneyException;
+    void balance(T item) throws SQLException, UnknownAccountException, IOException;
+    void deposit(T item) throws SQLException, UnknownAccountException, IOException;
+    void withdraw(T item) throws SQLException, UnknownAccountException, NotEnoughMoneyException, IOException;
+    void transfer(T item1, T item2) throws SQLException, UnknownAccountException, NotEnoughMoneyException, IOException;
 
-    void createNew();
+    void createNew() throws IOException;
 }

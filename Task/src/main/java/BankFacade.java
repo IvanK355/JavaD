@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -12,10 +13,10 @@ public class BankFacade {
         this.dbAccDao = new DbAccDao();
     }
 
-    public void info() throws UnknownNameOperationException, SQLException, UnknownAccountException, NotEnoughMoneyException {
+    public void info() throws UnknownNameOperationException, SQLException, UnknownAccountException, NotEnoughMoneyException, IOException {
 
         AccDaoFactory accDaoFactory = new AccDaoFactory();
-        Dao<Account> dao = accDaoFactory.getDao("db");
+        Dao<Account> dao = accDaoFactory.getDao("json");
 
         dao.createNew();
 
