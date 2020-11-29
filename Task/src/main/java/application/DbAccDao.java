@@ -11,8 +11,8 @@ import java.util.ArrayList;
 class DbAccDao implements Dao<Account> {
 
     private final String SELECT_QUERY = "SELECT * FROM account WHERE id = ?";
-    private final String UPDATE_DEPOSIT_QUERY ="update account set amount = amount +  ? WHERE id = ?";
-    private final String UPDATE_WITHDRAW_QUERY ="update account set amount = amount -  ? WHERE id = ?";
+    private final String UPDATE_DEPOSIT_QUERY = "update account set amount = amount +  ? WHERE id = ?";
+    private final String UPDATE_WITHDRAW_QUERY = "update account set amount = amount -  ? WHERE id = ?";
 
     public void withdraw(Account acc) throws SQLException, UnknownAccountException, NotEnoughMoneyException {
         sqlSelect(acc);
@@ -45,12 +45,11 @@ class DbAccDao implements Dao<Account> {
 
     public void createNew(ArrayList<Account> accounts) {
 
-        try {
-            DriverManager
-                    .getConnection("jdbc:h2:mem:ACCOUNT;DB_CLOSE_DELAY=-1;INIT=RUNSCRIPT FROM './Task/src/main/resources/data/schema.sql'\\;RUNSCRIPT FROM './Task/src/main/resources/data/data.sql'");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+        //DriverManager
+        //      .getConnection("jdbc:h2:mem:ACCOUNT;DB_CLOSE_DELAY=-1;INIT=RUNSCRIPT FROM './Task/src/main/resources/data/schema.sql'\\;RUNSCRIPT FROM './Task/src/main/resources/data/data.sql'");
+        DbcpDataSource.getConnection();
+
     }
 
     private void sqlSelect(Account acc) throws SQLException, UnknownAccountException {
@@ -59,8 +58,10 @@ class DbAccDao implements Dao<Account> {
         try {
             try {
 
-                connection = DriverManager
-                        .getConnection("jdbc:h2:mem:ACCOUNT");
+                //connection = DriverManager
+                //        .getConnection("jdbc:h2:mem:ACCOUNT");
+                connection = DbcpDataSource.getConnection();
+
                 preparedStatement = connection.prepareStatement(SELECT_QUERY);
                 preparedStatement.setInt(1, (acc.getId()));
                 ResultSet resultSet = preparedStatement.executeQuery();
@@ -98,8 +99,7 @@ class DbAccDao implements Dao<Account> {
         try {
             try {
                 int amount = 0;
-                connection = DriverManager
-                        .getConnection("jdbc:h2:mem:ACCOUNT");
+                connection = DbcpDataSource.getConnection();
                 preparedStatement = connection.prepareStatement(SELECT_QUERY);
                 preparedStatement.setInt(1, acc.getId());
                 ResultSet resultSet = preparedStatement.executeQuery();
@@ -133,6 +133,7 @@ class DbAccDao implements Dao<Account> {
                 throw new NotEnoughMoneyException("Недостаточно средств на счете! #" + acc.getId());
             }
         } finally {
+
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
@@ -151,8 +152,7 @@ class DbAccDao implements Dao<Account> {
 
                 System.out.println("Положили: " + acc.getAmountOperation());
 
-                connection = DriverManager
-                        .getConnection("jdbc:h2:mem:ACCOUNT");
+                connection = DbcpDataSource.getConnection();
                 preparedStatement = connection.prepareStatement(UPDATE_DEPOSIT_QUERY);
                 preparedStatement.setInt(1, acc.getAmountOperation());
                 preparedStatement.setInt(2, acc.getId());
