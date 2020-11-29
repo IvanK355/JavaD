@@ -6,12 +6,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class JsonAccDao implements Dao<Account> {
 
     public static final String filePath = "./Task/accounts.json";
-    public static final Type itemsMapType = new TypeToken<HashMap<Integer, Account>>() {}.getType();
+    public static final Type itemsMapType = new TypeToken<HashMap<Integer, Account>>() {
+    }.getType();
 
     @Override
 
@@ -19,6 +21,7 @@ public class JsonAccDao implements Dao<Account> {
 
         HashMap<Integer, Account> balanceHashMap = readJson();
         System.out.println(balanceHashMap.get(item.getId()));
+        System.out.println();
 
     }
 
@@ -26,22 +29,23 @@ public class JsonAccDao implements Dao<Account> {
 
     public void deposit(Account item) throws IOException {
         HashMap<Integer, Account> balanceHashMap = readJson();
-        System.out.println(balanceHashMap.get(item.getId()));
-        int newValue=+item.getAmount();
-        Account newAcc = new Account(item.getId(), item.getHolder(),newValue, "deposit");
+        int newValue = balanceHashMap.get(item.getId()).getEndSum() + item.getAmountOperation();
+        Account newAcc = new Account(item.getId(), item.getHolder(), item.getEndSum(), item.getAmountOperation(), newValue, "deposit");
         balanceHashMap.put(item.getId(), newAcc);
+        System.out.println(balanceHashMap.get(item.getId()));
         writeJson(balanceHashMap);
+        System.out.println();
     }
 
     @Override
     public void withdraw(Account item) throws IOException {
         HashMap<Integer, Account> balanceHashMap = readJson();
-        System.out.println(balanceHashMap.get(item.getId()));
-        int newValue=-item.getAmount();
-        Account newAcc = new Account(item.getId(), item.getHolder(),newValue, "deposit");
+        int newValue = balanceHashMap.get(item.getId()).getEndSum() - item.getAmountOperation();
+        Account newAcc = new Account(item.getId(), item.getHolder(), item.getEndSum(), item.getAmountOperation(), newValue, "withdraw");
         balanceHashMap.put(item.getId(), newAcc);
         System.out.println(balanceHashMap.get(item.getId()));
         writeJson(balanceHashMap);
+        System.out.println();
 
     }
 
@@ -49,30 +53,29 @@ public class JsonAccDao implements Dao<Account> {
     public void transfer(Account item1, Account item2) throws IOException {
 
         HashMap<Integer, Account> balanceHashMap = readJson();
-        System.out.println(balanceHashMap.get(item1.getId()));
-        System.out.println(balanceHashMap.get(item2.getId()));
-        int newValue1=-item1.getAmount();
-        int newValue2=+item2.getAmount();
-        Account newAcc1 = new Account(item1.getId(), item1.getHolder(),newValue1, "withdraw");
-        Account newAcc2 = new Account(item2.getId(), item2.getHolder(),newValue2, "deposit");
+        int newValue1 = balanceHashMap.get(item1.getId()).getEndSum() - item1.getAmountOperation();
+        int newValue2 = balanceHashMap.get(item2.getId()).getEndSum() + item2.getAmountOperation();
+        Account newAcc1 = new Account(item1.getId(), item1.getHolder(), item1.getEndSum(), item1.getAmountOperation(), newValue1, "withdraw");
+        Account newAcc2 = new Account(item2.getId(), item2.getHolder(), item2.getEndSum(), item2.getAmountOperation(), newValue2, "deposit");
         balanceHashMap.put(item1.getId(), newAcc1);
-        balanceHashMap.put(item2.getId(), newAcc1);
+        balanceHashMap.put(item2.getId(), newAcc2);
         System.out.println(balanceHashMap.get(item1.getId()));
         System.out.println(balanceHashMap.get(item2.getId()));
         writeJson(balanceHashMap);
+        System.out.println();
 
     }
 
     @Override
-    public void createNew() throws IOException {
+    public void createNew(ArrayList<Account> accounts) throws IOException {
 
         Gson gson = new Gson();
 
         FileWriter fw = new FileWriter(filePath);
 
-        HashMap<Integer, Account> mapItems = new HashMap<Integer, Account>();
+        HashMap<Integer, Account> mapItems = new HashMap<>();
         for (int i = 1; i < 11; i++) {
-            mapItems.put(i, new Account(i, "Holder"+i, 500, "deposit"));
+            mapItems.put(i, accounts.get(i));
         }
         gson.toJson(mapItems, fw);
         //String jsonStr = gson.toJson(mapItems);

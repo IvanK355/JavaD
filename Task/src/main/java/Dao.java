@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public interface Dao<T> {
 
@@ -8,5 +9,5 @@ public interface Dao<T> {
     void withdraw(T item) throws SQLException, UnknownAccountException, NotEnoughMoneyException, IOException;
     void transfer(T item1, T item2) throws SQLException, UnknownAccountException, NotEnoughMoneyException, IOException;
 
-    void createNew() throws IOException;
+    void createNew(ArrayList<Account> accounts) throws IOException;
 }

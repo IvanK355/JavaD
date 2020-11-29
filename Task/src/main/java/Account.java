@@ -2,7 +2,9 @@ public class Account {
 
     private int id;
     private String holder;
-    private int amount;
+    private int beginSum;
+    private int amountOperation;
+    private int endSum;
     private String operation;
 
     public String getOperation() {
@@ -13,12 +15,37 @@ public class Account {
         this.operation = operation;
     }
 
-
-    public Account(int id, String holder, int amount, String operation) {
+    public Account(int id, String holder, int beginSum, int amountOperation, int endSum, String operation) {
         this.id = id;
         this.holder = holder;
-        this.amount = amount;
+        this.beginSum = beginSum;
+        this.amountOperation = amountOperation;
+        this.endSum = endSum;
         this.operation = operation;
+    }
+
+    public int getBeginSum() {
+        return beginSum;
+    }
+
+    public void setBeginSum(int beginSum) {
+        this.beginSum = beginSum;
+    }
+
+    public int getAmountOperation() {
+        return amountOperation;
+    }
+
+    public void setAmountOperation(int amountOperation) {
+        this.amountOperation = amountOperation;
+    }
+
+    public int getEndSum() {
+        return endSum;
+    }
+
+    public void setEndSum(int endSum) {
+        this.endSum = endSum;
     }
 
     public Account() {
@@ -40,15 +67,9 @@ public class Account {
         this.holder = holder;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public String toString(){
-        return id + " : " + holder + " : " + amount + " : " + operation;
+    public String toString() {
+        return id + " : " + holder + " : " + "Нач. сумма: " + beginSum
+                + " Сумма операции: " + amountOperation + " Конеч сумма: " + endSum
+                 + " : " + operation;
     }
 }

@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 
 class DbAccDao implements Dao<Account> {
 
@@ -10,6 +11,7 @@ class DbAccDao implements Dao<Account> {
         sqlSelect(acc);
         updateWithdraw(acc);
         sqlSelect(acc);
+        System.out.println();
 
     }
 
@@ -21,6 +23,7 @@ class DbAccDao implements Dao<Account> {
         sqlSelect(acc);
         updateDeposit(acc);
         sqlSelect(acc);
+        System.out.println();
     }
 
     public void transfer(Account acc1, Account acc2) throws SQLException, UnknownAccountException, NotEnoughMoneyException {
@@ -33,7 +36,7 @@ class DbAccDao implements Dao<Account> {
         balance(acc2);
     }
 
-    public void createNew() {
+    public void createNew(ArrayList<Account> accounts) {
 
         try {
             DriverManager
@@ -97,16 +100,16 @@ class DbAccDao implements Dao<Account> {
                     amount = resultSet.getInt(3);
                 }
 
-                if ((amount - acc.getAmount()) < 0) {
+                if ((amount - acc.getAmountOperation()) < 0) {
                     throw new NotEnoughMoneyException("Недостаточно средств");
                 }
 
-                System.out.println("Сняли: " + acc.getAmount());
+                System.out.println("Сняли: " + acc.getAmountOperation());
 
                 connection = DriverManager
                         .getConnection("jdbc:h2:mem:ACCOUNT");
                 preparedStatement = connection.prepareStatement(UPDATE_WITHDRAW_QUERY);
-                preparedStatement.setInt(1, acc.getAmount());
+                preparedStatement.setInt(1, acc.getAmountOperation());
                 preparedStatement.setInt(2, acc.getId());
                 preparedStatement.executeUpdate();
 
@@ -139,12 +142,12 @@ class DbAccDao implements Dao<Account> {
         try {
             try {
 
-                System.out.println("Положили: " + acc.getAmount());
+                System.out.println("Положили: " + acc.getAmountOperation());
 
                 connection = DriverManager
                         .getConnection("jdbc:h2:mem:ACCOUNT");
                 preparedStatement = connection.prepareStatement(UPDATE_DEPOSIT_QUERY);
-                preparedStatement.setInt(1, acc.getAmount());
+                preparedStatement.setInt(1, acc.getAmountOperation());
                 preparedStatement.setInt(2, acc.getId());
                 preparedStatement.executeUpdate();
 
@@ -154,7 +157,7 @@ class DbAccDao implements Dao<Account> {
                 preparedStatement.setInt(1, acc.getId());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (!resultSet.next()) {
-                    throw new UnknownAccountException("Счет: " + acc.getAmount() + " неверный");
+                    throw new UnknownAccountException("Счет: " + acc.getAmountOperation() + " неверный");
                 }
 
             } catch (SQLException | UnknownAccountException throwables) {
