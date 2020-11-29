@@ -1,3 +1,9 @@
+package application;
+
+import dao.Dao;
+import dao.NotEnoughMoneyException;
+import dao.UnknownAccountException;
+import domain.Account;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -41,7 +47,7 @@ class DbAccDao implements Dao<Account> {
 
         try {
             DriverManager
-                    .getConnection("jdbc:h2:mem:ACCOUNT;DB_CLOSE_DELAY=-1;INIT=RUNSCRIPT FROM './Task/schema.sql'\\;RUNSCRIPT FROM './Task/data.sql'");
+                    .getConnection("jdbc:h2:mem:ACCOUNT;DB_CLOSE_DELAY=-1;INIT=RUNSCRIPT FROM './Task/src/main/resources/data/schema.sql'\\;RUNSCRIPT FROM './Task/src/main/resources/data/data.sql'");
         } catch (SQLException e) {
             e.printStackTrace();
         }

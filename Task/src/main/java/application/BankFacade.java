@@ -1,3 +1,11 @@
+package application;
+
+import dao.Dao;
+import dao.NotEnoughMoneyException;
+import dao.UnknownAccountException;
+import dao.UnknownNameOperationException;
+import domain.Account;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,7 +22,7 @@ public class BankFacade {
     public void info() throws UnknownNameOperationException, SQLException, UnknownAccountException, NotEnoughMoneyException, IOException {
 
         AccDaoFactory accDaoFactory = new AccDaoFactory();
-        Dao<Account> dao = accDaoFactory.getDao("json");
+        Dao<Account> dao = accDaoFactory.getDao("db");
 
 
         for (int i = 0; i < 11; i++) {

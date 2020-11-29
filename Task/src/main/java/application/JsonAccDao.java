@@ -1,5 +1,10 @@
+package application;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import dao.Dao;
+import domain.Account;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -10,7 +15,7 @@ import java.util.HashMap;
 
 public class JsonAccDao implements Dao<Account> {
 
-    public static final String filePath = "./Task/accounts.json";
+    public static final String filePath = "./Task/src/main/resources/data/accounts.json";
     public static final Type itemsMapType = new TypeToken<HashMap<Integer, Account>>() {
     }.getType();
 

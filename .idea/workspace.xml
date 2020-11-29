@@ -6,13 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="99f0ea9f-d5b6-42a4-9774-9287f71c3943" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Task/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/resources/data/accounts.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/resources/data/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/resources/data/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/src/main/java/AccDaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/AccDaoFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/src/main/java/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/src/main/java/AccountService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/src/main/java/BankFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/BankFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/dao/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/dao/DaoFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/src/main/java/DbAccDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/DbAccDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/src/main/java/JsonAccDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/JsonAccDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/NotEnoughMoneyException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/dao/NotEnoughMoneyException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/UnknownAccountException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/dao/UnknownAccountException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/UnknownNameOperationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/dao/UnknownNameOperationException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,17 +62,18 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\1\IdeaProjects\Java-05_v1\Task" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\1\IdeaProjects\Java-05_v1\Task\src\main\java" />
+      <recent name="C:\Users\1\IdeaProjects\Java-05_v1\Task" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\1\IdeaProjects\Java-05_v1\Task\src\main\resources\data" />
       <recent name="C:\Users\1\IdeaProjects\Java-05_v1\Task" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="application.Main" />
       <module name="Task" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -184,22 +191,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1606644030784" />
-    <state width="1323" height="180" key="GridCell.Tab.0.bottom" timestamp="1606671578612">
+    <state width="1323" height="180" key="GridCell.Tab.0.bottom" timestamp="1606673716402">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="180" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606671578612" />
-    <state width="1323" height="180" key="GridCell.Tab.0.center" timestamp="1606671578612">
+    <state width="1323" height="180" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606673716402" />
+    <state width="1323" height="180" key="GridCell.Tab.0.center" timestamp="1606673716402">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="180" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606671578612" />
-    <state width="1323" height="180" key="GridCell.Tab.0.left" timestamp="1606671578612">
+    <state width="1323" height="180" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606673716402" />
+    <state width="1323" height="180" key="GridCell.Tab.0.left" timestamp="1606673716402">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="180" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606671578612" />
-    <state width="1323" height="180" key="GridCell.Tab.0.right" timestamp="1606671578612">
+    <state width="1323" height="180" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606673716402" />
+    <state width="1323" height="180" key="GridCell.Tab.0.right" timestamp="1606673716402">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="180" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606671578612" />
+    <state width="1323" height="180" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606673716402" />
     <state x="263" y="106" key="IDE.errors.dialog" timestamp="1606670126345">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

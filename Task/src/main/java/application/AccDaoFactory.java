@@ -1,3 +1,9 @@
+package application;
+
+import dao.Dao;
+import dao.DaoFactory;
+import domain.Account;
+
 public class AccDaoFactory implements DaoFactory<Account> {
     @Override
     public Dao<Account> getDao(String type) {
