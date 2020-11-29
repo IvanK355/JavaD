@@ -29,11 +29,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
@@ -68,33 +70,57 @@
       <option name="presentableId" value="Default" />
       <updated>1606643427837</updated>
     </task>
+    <task id="LOCAL-00001" summary="Java-05 v1">
+      <created>1606644401029</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606644401029</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Java-05 v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Java-05 v1" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="163" y="0" key="#Project_Structure" timestamp="1606644283703">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="163" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1606644283703" />
     <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1606644030784">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1606644030784" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1606643970527">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1606644537044">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606643970527" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1606643970526">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606644537044" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1606644537043">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606643970526" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1606643970526">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606644537043" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1606644537043">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606643970526" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1606643970526">
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606644537043" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1606644537044">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606643970526" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606644537044" />
     <state x="163" y="0" key="SettingsEditor" timestamp="1606643720059">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1606643720059" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1606644519020">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1606644519020" />
+    <state x="484" y="270" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1606644462354">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="484" y="270" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1366.728@0.0.1366.728" timestamp="1606644462354" />
     <state x="308" y="0" key="new project wizard" timestamp="1606643458028">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
