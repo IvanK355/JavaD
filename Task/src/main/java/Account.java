@@ -7,13 +7,6 @@ public class Account {
     private int endSum;
     private String operation;
 
-    public String getOperation() {
-        return operation;
-    }
-
-    public void setOperation(String operation) {
-        this.operation = operation;
-    }
 
     public Account(int id, String holder, int beginSum, int amountOperation, int endSum, String operation) {
         this.id = id;
@@ -21,6 +14,14 @@ public class Account {
         this.beginSum = beginSum;
         this.amountOperation = amountOperation;
         this.endSum = endSum;
+        this.operation = operation;
+    }
+
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
         this.operation = operation;
     }
 
@@ -48,28 +49,29 @@ public class Account {
         this.endSum = endSum;
     }
 
-    public Account() {
-    }
-
     public int getId() {
+
         return id;
     }
 
     public void setId(int id) {
+
         this.id = id;
     }
 
     public String getHolder() {
+
         return holder;
     }
 
     public void setHolder(String holder) {
+
         this.holder = holder;
     }
 
     public String toString() {
         return id + " : " + holder + " : " + "Нач. сумма: " + beginSum
                 + " Сумма операции: " + amountOperation + " Конеч сумма: " + endSum
-                 + " : " + operation;
+                + " : " + operation;
     }
 }

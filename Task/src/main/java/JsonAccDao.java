@@ -1,6 +1,5 @@
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -89,7 +88,6 @@ public class JsonAccDao implements Dao<Account> {
         FileWriter fw = new FileWriter(filePath);
 
         gson.toJson(mapItems, fw);
-        //String jsonStr = gson.toJson(mapItems);
         fw.close();
     }
 
@@ -101,10 +99,10 @@ public class JsonAccDao implements Dao<Account> {
 
         BufferedReader bufferedReader = new BufferedReader(fr);
 
+
         HashMap<Integer, Account> mapItemsDes = gson.fromJson(bufferedReader, itemsMapType);
+        fr.close();
 
         return mapItemsDes;
-
     }
-
 }

@@ -1,3 +1,4 @@
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -46,7 +47,7 @@ class DbAccDao implements Dao<Account> {
         }
     }
 
-    void sqlSelect(Account acc) throws SQLException, UnknownAccountException {
+    private void sqlSelect(Account acc) throws SQLException, UnknownAccountException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
@@ -84,7 +85,7 @@ class DbAccDao implements Dao<Account> {
         }
     }
 
-    void updateWithdraw(Account acc) throws SQLException, NotEnoughMoneyException {
+    private void updateWithdraw(Account acc) throws SQLException, NotEnoughMoneyException {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;

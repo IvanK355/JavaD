@@ -5,18 +5,16 @@ import java.util.ArrayList;
 public class BankFacade {
 
     private final ArrayList<Account> accounts;
-    private final DbAccDao dbAccDao;
 
 
     public BankFacade() {
         this.accounts = new ArrayList<>();
-        this.dbAccDao = new DbAccDao();
     }
 
     public void info() throws UnknownNameOperationException, SQLException, UnknownAccountException, NotEnoughMoneyException, IOException {
 
         AccDaoFactory accDaoFactory = new AccDaoFactory();
-        Dao<Account> dao = accDaoFactory.getDao("db");
+        Dao<Account> dao = accDaoFactory.getDao("json");
 
 
         for (int i = 0; i < 11; i++) {
