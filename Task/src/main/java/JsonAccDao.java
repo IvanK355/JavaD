@@ -18,7 +18,7 @@ public class JsonAccDao implements Dao<Account> {
     }
 
     @Override
-    public void transfer(Account item) {
+    public void transfer(Account item1, Account item2) {
 
     }
 

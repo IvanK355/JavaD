@@ -1,37 +1,54 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BankFacade {
 
-    private ArrayList<Account> accounts;
-    private AccountService accountService;
+    private final ArrayList<Account> accounts;
+    private final DbAccDao dbAccDao;
 
 
     public BankFacade() {
         this.accounts = new ArrayList<>();
-        this.accountService = new AccountService();
+        this.dbAccDao = new DbAccDao();
     }
 
-    public void info() throws IOException, UnknownNameOperationException, SQLException, UnknownAccountException, NotEnoughMoneyException {
+    public void info() throws UnknownNameOperationException, SQLException, UnknownAccountException, NotEnoughMoneyException {
+
+        dbAccDao.createNew();
+
+        for (int i = 0; i < 11; i++) {
+            accounts.add(new Account());
+        }
 
 
-        accountService.createNew();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        // *  BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        // * String s = reader.readLine();
+        // * String[] array = s.split("\\W");
+        accounts.get(0).setOperation("balance");
+        accounts.get(0).setId(1);
+        accounts.get(1).setOperation("deposit");
+        accounts.get(1).setId(2);
+        accounts.get(1).setAmount(100);
+        accounts.get(2).setOperation("withdraw");
+        accounts.get(2).setId(3);
+        accounts.get(2).setAmount(100);
+        accounts.get(3).setOperation("transfer");
+        accounts.get(3).setId(4);
+        accounts.get(3).setAmount(100);
+        accounts.get(4).setOperation("transfer");
+        accounts.get(4).setId(5);
+        accounts.get(4).setAmount(100);
 
-        String s = reader.readLine();
+        for (int i = 0; i < 4; i++) {
 
-        String[] array = s.split("\\W");
+            switch (accounts.get(i).getOperation()) {
+                case "balance" -> dbAccDao.balance(accounts.get(i));
+                case "withdraw" -> dbAccDao.withdraw(accounts.get(i));
+                case "deposit" -> dbAccDao.deposit(accounts.get(i));
+                case "transfer" -> dbAccDao.transfer(accounts.get(i), accounts.get(i+1));
 
-        switch (array[0]) {
-            case "balance" -> accountService.balance(array[1]);
-            case "withdraw" -> accountService.withdraw(array[1], array[2]);
-            case "deposit" -> accountService.deposit(array[1], array[2]);
-            case "transfer" -> accountService.transfer(array[1], array[2], array[3]);
-
-            default -> throw new UnknownNameOperationException("Неизвестная операция " + array[0]);
+                default -> throw new UnknownNameOperationException("Неизвестная операция " + accounts.get(i).getOperation());
+            }
         }
     }
 }

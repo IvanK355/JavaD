@@ -1,32 +1,32 @@
-import java.sql.*;ppublic
+import java.sql.*;
 
 class DbAccDao implements Dao<Account> {
 
-    void withdraw(String accountId, String amount2) throws SQLException, UnknownAccountException, NotEnoughMoneyException {
-        sqlSelect(accountId);
-        updateWithdraw(accountId, amount2);
-        sqlSelect(accountId);
+    public void withdraw(Account acc) throws SQLException, UnknownAccountException, NotEnoughMoneyException {
+        sqlSelect(acc);
+        updateWithdraw(acc);
+        sqlSelect(acc);
 
     }
 
-    void balance(String accountId) throws SQLException, UnknownAccountException {
-        sqlSelect(accountId);
+    public void balance(Account acc) throws SQLException, UnknownAccountException {
+        sqlSelect(acc);
     }
 
-    void deposit(String accountId, String amount2) throws SQLException, UnknownAccountException {
-        sqlSelect(accountId);
-        updateDeposit(accountId, amount2);
-        sqlSelect(accountId);
+    public void deposit(Account acc) throws SQLException, UnknownAccountException {
+        sqlSelect(acc);
+        updateDeposit(acc);
+        sqlSelect(acc);
     }
 
-    public void transfer(String from, String to, String amount) throws SQLException, UnknownAccountException, NotEnoughMoneyException {
+    public void transfer(Account acc1, Account acc2) throws SQLException, UnknownAccountException, NotEnoughMoneyException {
 
-        balance(from);
-        balance(to);
-        updateWithdraw(from, amount);
-        updateDeposit(to, amount);
-        balance(from);
-        balance(to);
+        balance(acc1);
+        balance(acc2);
+        updateWithdraw(acc1);
+        updateDeposit(acc2);
+        balance(acc1);
+        balance(acc2);
     }
 
     void createNew() {
@@ -39,7 +39,7 @@ class DbAccDao implements Dao<Account> {
         }
     }
 
-    void sqlSelect(String accountId) throws SQLException, UnknownAccountException {
+    void sqlSelect(Account acc) throws SQLException, UnknownAccountException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
@@ -48,13 +48,13 @@ class DbAccDao implements Dao<Account> {
                 connection = DriverManager
                         .getConnection("jdbc:h2:mem:ACCOUNT");
                 preparedStatement = connection.prepareStatement("SELECT * FROM account WHERE id = ?");
-                preparedStatement.setInt(1, Integer.parseInt(accountId));
+                preparedStatement.setInt(1, (acc.getId()));
                 ResultSet resultSet = preparedStatement.executeQuery();
                 int id;
                 String name;
                 int amount;
                 if (!resultSet.next()) {
-                    throw new UnknownAccountException("Счет: " + accountId + " неверный");
+                    throw new UnknownAccountException("Счет: " + acc.getId() + " неверный");
                 }
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
@@ -68,12 +68,16 @@ class DbAccDao implements Dao<Account> {
                 throwables.printStackTrace();
             }
         } finally {
-            preparedStatement.close();
-            connection.close();
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
         }
     }
 
-    void updateWithdraw(String accountId, String amount2) throws SQLException, NotEnoughMoneyException {
+    void updateWithdraw(Account acc) throws SQLException, NotEnoughMoneyException {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -83,76 +87,84 @@ class DbAccDao implements Dao<Account> {
                 connection = DriverManager
                         .getConnection("jdbc:h2:mem:ACCOUNT");
                 preparedStatement = connection.prepareStatement("SELECT * FROM account WHERE id = ?");
-                preparedStatement.setInt(1, Integer.parseInt(accountId));
+                preparedStatement.setInt(1, acc.getId());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     amount = resultSet.getInt(3);
                 }
 
-                if ((amount - Integer.parseInt(amount2)) < 0) {
+                if ((amount - acc.getAmount()) < 0) {
                     throw new NotEnoughMoneyException("Недостаточно средств");
                 }
 
-                System.out.println("Сняли: " + amount2);
+                System.out.println("Сняли: " + acc.getAmount());
 
                 connection = DriverManager
                         .getConnection("jdbc:h2:mem:ACCOUNT");
                 String sql = "update account set amount = amount - ? WHERE id = ?";
                 preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setInt(1, Integer.parseInt(amount2));
-                preparedStatement.setInt(2, Integer.parseInt(accountId));
+                preparedStatement.setInt(1, acc.getAmount());
+                preparedStatement.setInt(2, acc.getId());
                 preparedStatement.executeUpdate();
 
                 preparedStatement = null;
 
                 preparedStatement = connection.prepareStatement("SELECT * FROM account WHERE id = ?");
-                preparedStatement.setInt(1, Integer.parseInt(accountId));
+                preparedStatement.setInt(1, acc.getId());
                 resultSet = preparedStatement.executeQuery();
                 if (!resultSet.next()) {
-                    throw new UnknownAccountException("Счет: " + accountId + " неверный");
+                    throw new UnknownAccountException("Счет: " + acc.getId() + " неверный");
                 }
 
             } catch (NotEnoughMoneyException | UnknownAccountException e) {
-                throw new NotEnoughMoneyException("Недостаточно средств на счете! #" + accountId);
+                throw new NotEnoughMoneyException("Недостаточно средств на счете! #" + acc.getId());
             }
         } finally {
-            preparedStatement.close();
-            connection.close();
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
         }
     }
 
-    void updateDeposit(String accountId, String amount2) throws SQLException {
+    void updateDeposit(Account acc) throws SQLException {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
             try {
 
-                System.out.println("Положили: " + amount2);
+                System.out.println("Положили: " + acc.getAmount());
 
                 connection = DriverManager
                         .getConnection("jdbc:h2:mem:ACCOUNT");
                 String sql = "update account set amount = amount +  ? WHERE id = ?";
                 preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setInt(1, Integer.parseInt(amount2));
-                preparedStatement.setInt(2, Integer.parseInt(accountId));
+                preparedStatement.setInt(1, acc.getAmount());
+                preparedStatement.setInt(2, acc.getId());
                 preparedStatement.executeUpdate();
 
                 preparedStatement = null;
 
                 preparedStatement = connection.prepareStatement("SELECT * FROM account WHERE id = ?");
-                preparedStatement.setInt(1, Integer.parseInt(accountId));
+                preparedStatement.setInt(1, acc.getId());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (!resultSet.next()) {
-                    throw new UnknownAccountException("Счет: " + accountId + " неверный");
+                    throw new UnknownAccountException("Счет: " + acc.getAmount() + " неверный");
                 }
 
             } catch (SQLException | UnknownAccountException throwables) {
                 throwables.printStackTrace();
             }
         } finally {
-            preparedStatement.close();
-            connection.close();
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
         }
     }
 

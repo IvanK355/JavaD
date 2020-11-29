@@ -2,12 +2,26 @@ public class Account {
 
     private int id;
     private String holder;
-    private String amount;
+    private int amount;
+    private String operation;
 
-    public Account(int id, String holder, String amount) {
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
+
+    public Account(int id, String holder, int amount, String operation) {
         this.id = id;
         this.holder = holder;
         this.amount = amount;
+        this.operation = operation;
+    }
+
+    public Account() {
     }
 
     public int getId() {
@@ -26,11 +40,11 @@ public class Account {
         this.holder = holder;
     }
 
-    public String getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 }
